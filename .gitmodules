@@ -1,0 +1,6 @@
+[submodule "thespis_iface"]
+	path = thespis_iface
+	url = git@github.com:thespis-rs/thespis_iface.git
+[submodule "thespis_impl"]
+	path = thespis_impl
+	url = git@github.com:thespis-rs/thespis_impl.git
