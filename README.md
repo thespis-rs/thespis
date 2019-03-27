@@ -10,3 +10,12 @@ Thespis has the following goals:
 - users don't pay for what they don't use: if you are on a single threaded machine, you shouldn't pay thread sync. If you are doing actors in process, you shouldn't pay for network logic...
 - run everywhere: no_std, single/multithreaded, all targets: wasm, embedded, win, unix, mac, ...
 
+
+## TODO list
+
+- write unit tests
+- clean up code
+- write benchmark
+- remote actors
+- documentation
+

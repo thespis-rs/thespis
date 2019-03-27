@@ -4,3 +4,6 @@
 [submodule "thespis_impl"]
 	path = thespis_impl
 	url = git@github.com:thespis-rs/thespis_impl.git
+[submodule "thespis_derive"]
+	path = thespis_derive
+	url = git@github.com:thespis-rs/thespis_derive.git
