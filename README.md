@@ -11,11 +11,15 @@ Thespis has the following goals:
 - run everywhere: no_std, single/multithreaded, all targets: wasm, embedded, win, unix, mac, ...
 
 
-## TODO list
+## Before publish
 
-- write unit tests
-- clean up code
-- write benchmark
-- remote actors
-- documentation
+- remove all allow( dead_code, unused_imports )
+- verify every TODO, FIXME
+- deny missing_docs, missing_debug_impl
+- verify all different use cases are documented and tested
+- verify whether there are any unsafes and if not, forbid unsafe
+- verify log crate use
+- error handling
+- guide level docs
+- verify targets, no_std?, wasm, single_threaded
 
