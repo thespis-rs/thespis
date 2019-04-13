@@ -11,8 +11,20 @@ Thespis has the following goals:
 - run everywhere: no_std, single/multithreaded, all targets: wasm, embedded, win, unix, mac, ...
 
 
+## Open questions
+
+- How to get rid of the deduplication of Send vs !Send messages and the threading overhead (actually the overhead is not there on the channels if the Sender and Receiver are in the same thread I think, at least our current single threaded impl also uses the channels).
+- Should we standardize different remote addresses by putting an interface for them in iface? Currently just impls...
+
+## Tools:
+
+- async thread sync: qutex
+
+
 ## Before publish
 
+- UNIFY single and multithreaded impls and ifaces!!!
+- verify object safety of all traits in interface
 - remove all allow( dead_code, unused_imports )
 - verify every TODO, FIXME
 - deny missing_docs, missing_debug_impl
