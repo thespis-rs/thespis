@@ -23,7 +23,6 @@ Thespis has the following goals:
 
 ## Before publish
 
-- UNIFY single and multithreaded impls and ifaces!!!
 - verify object safety of all traits in interface
 - remove all allow( dead_code, unused_imports )
 - verify every TODO, FIXME
@@ -33,5 +32,5 @@ Thespis has the following goals:
 - verify log crate use
 - error handling
 - guide level docs
-- verify targets, no_std?, wasm, single_threaded
+- verify targets, no_std?, wasm, cross platforms
 
