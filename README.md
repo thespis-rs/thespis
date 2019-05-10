@@ -30,7 +30,6 @@ Thespis has the following goals:
 - verify all different use cases are documented and tested
 - verify whether there are any unsafes and if not, forbid unsafe
 - verify log crate use
-- error handling
 - guide level docs
 - verify targets, no_std?, wasm, cross platforms
 
