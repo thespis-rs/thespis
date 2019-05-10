@@ -7,3 +7,9 @@
 [submodule "thespis_derive"]
 	path = thespis_derive
 	url = git@github.com:thespis-rs/thespis_derive.git
+[submodule "thespis_iface_remote"]
+	path = thespis_iface_remote
+	url = git@github.com:thespis-rs/thespis_iface_remote.git
+[submodule "thespis_impl_remote"]
+	path = thespis_impl_remote
+	url = git@github.com:thespis-rs/thespis_impl_remote.git
