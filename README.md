@@ -43,7 +43,7 @@ This is currently in an early development phase and won't be published officiall
 ### What's next (hopefully all in 2019)
 
 - [ ] documentation and user guide
-- [*] verifying it works in WASM
+- [x] verifying it works in WASM
 - [ ] polish the wasm websockets so we can use remote actors to talk to server
 - [ ] benchmarking remote actors
 - [ ] some refactoring
