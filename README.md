@@ -19,7 +19,7 @@ Thespis has the following goals:
 For the moment I failed to make it work conveniently with messages that are `!Send` and I don't think `no_std` is going to work for now.
 
 
-## Structure of the product
+## Library Structure
 
 This repository has submodules which are actual crates:
 
@@ -43,7 +43,7 @@ This is currently in an early development phase and won't be published officiall
 ### What's next (hopefully all in 2019)
 
 - [ ] documentation and user guide
-- [ ] verifying it works in WASM
+- [*] verifying it works in WASM
 - [ ] polish the wasm websockets so we can use remote actors to talk to server
 - [ ] benchmarking remote actors
 - [ ] some refactoring
