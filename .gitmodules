@@ -16,3 +16,9 @@
 [submodule "thespis_guide"]
 	path = thespis_guide
 	url = git@github.com:thespis-rs/thespis_guide.git
+[submodule "thespis_impl_runtime"]
+	path = thespis_impl_runtime
+	url = git@github.com:thespis-rs/thespis_impl_runtime.git
+[submodule "thespis_iface_runtime"]
+	path = thespis_iface_runtime
+	url = git@github.com:thespis-rs/thespis_iface_runtime.git
