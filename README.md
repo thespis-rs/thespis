@@ -46,7 +46,7 @@ This is currently in an early development phase and won't be published officiall
 - [x] verifying it works in WASM
 - [ ] polish the wasm websockets so we can use remote actors to talk to server
 - [ ] benchmarking remote actors
-- [ ] some refactoring
+- [ ] some refactoring (in peer incoming we have a very long method)
 - [ ] publish a version 0.1
 - [ ] bounded mailbox, ringchannel?
 - [ ] re-evaluate the wire fromat (maybe use capn'proto)
