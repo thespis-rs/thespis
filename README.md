@@ -44,13 +44,13 @@ This is currently in an early development phase and won't be published officiall
 
 - [ ] documentation and user guide
 - [x] verifying it works in WASM
-- [x] re-evaluate the runtime (is now in the [naja_async_runtime](https://github.com/najamelan/async_runtime) crate)
-- [ ] polish the wasm websockets so we can use remote actors to talk to server
+- [ ] re-evaluate the runtime (is now in the [naja_async_runtime](https://github.com/najamelan/async_runtime) crate), this needs some further thought. A nursery would be nice.
+- [x] polish the wasm websockets so we can use remote actors to talk to server. (There is now ws_stream_wasm and ws_stream_tungstenite)
 - [ ] benchmarking remote actors
-- [ ] some refactoring (in peer incoming we have a very long method)
+- [x] some refactoring (in peer incoming we have a very long method)
 - [ ] publish a version 0.1
 - [ ] bounded mailbox, ringchannel?
-- [ ] re-evaluate the wire fromat (maybe use capn'proto)
+- [ ] re-evaluate the wire fromat (maybe use capn'proto, flatbuffers or SBE)
 
 
 ## Main differences with other actor libraries
