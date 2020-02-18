@@ -78,3 +78,11 @@ Actix does have features that thespis doesn't have:
 As for other actor libraries, at the time of writing:
 - [kay](https://github.com/aeplay/kay) has as good as no documentation :-( so I didn't look any further. They do have remote actors and a wire format that is also the in memory representation, which probably is fast. Thespis only has a provisional wire format for now, which does not have that property.
 - [riker](https://riker.rs/) I admit that I didn't look into it much, but from the example code I saw, it looks as if an actor can only receive messages of one type, which seems like an unpleasant restriction that actix doesn't have.
+
+## Alternatives
+
+- actix
+- axiom
+- sealrs
+- riker
+- kay
