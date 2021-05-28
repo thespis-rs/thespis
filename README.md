@@ -11,8 +11,7 @@ A minimal actor model for Rust.
 
 Thespis has the following goals:
 
-- target futures 0.3 and async/await immediately, so won't compile on stable for a while.
-- separate interface from implementation. Clients can use the interface while freely chosing which implementation they want for each concept: Addr, Mailbox, Envelope, ... Everybody can make their own implementations, yet stay compatible with all other actors. Libraries can expose actors without choosing an implementation, and let the binary application choose.
+- separate interface from implementation. Clients can use the interface while freely chosing which implementation they want for each concept: Addr, Mailbox, ... Everybody can make their own implementations, yet stay compatible with all other actors. Libraries can expose actors without choosing an implementation, and let the binary application choose.
 - users don't pay for what they don't use: if you are on a single threaded machine, you shouldn't pay thread sync. If you are doing actors in process, you shouldn't pay for network logic...
 - run everywhere: no_std, single/multithreaded, all targets: wasm, embedded, win, unix, mac, ...
 
@@ -30,33 +29,37 @@ This repository has submodules which are actual crates:
 
 ## State of the project
 
-This is currently in an early development phase and won't be published officially for at least another few months. It is functional however and you can have a look at the examples and integration tests in [thespis_impl](https://github.com/thespis-rs/thespis_impl) and [thespis_impl_remote](https://github.com/thespis-rs/thespis_impl_remote) to see it working. There is some untested API documentation already as well, so you can run `cargo doc --open` to see that.
+This is currently in alpha release. _thespis_remote_ has not seen an alpha release yet, but it works. You can have a look at the examples and integration tests in [thespis_impl](https://github.com/thespis-rs/thespis_impl) and [thespis_impl_remote](https://github.com/thespis-rs/thespis_impl_remote) to see it working. There is some API documentation already as well, so you can run `cargo doc --open` to see that. The [guide level docs](https://thespis-rs.github.io/thespis_guide/) are in development.
 
 
 ### What works
 
-- Basic actor functionality (send to and call) actors with `Send` messages. `send` is a one way operation, `call` will give you a return value of the handler.
-- Recipients implement futures 0.3 Sink and Actors can be Observable generating a Stream, which can be connected to other actor's Addr and manipulated with all the stream combinators from the futures library.
-- Remote actors without discovery, you need to directly have a Framed sink/stream over a custom wire format.
-- Relaying messages to another process
+- Basic actor functionality (send to and call) actors with `Send` messages. `send` is a one way operation, `call` will give you a return value from the handler.
+- Addr implement futures 0.3 Sink and Actors can be Observable generating a Stream, which can be connected to other actor's Addr and manipulated with all the stream combinators from the futures library.
+- Remote actors without discovery, you need to have a direct `AsyncRead`/`AsyncWrite` connection.
+- Relaying messages to another process.
+- Actor supervision.
+- log diagnostics with tracing.
+- works on Wasm
+- The channel between `Addr` and `Mailbox` can be chosen by the user as long as it is `Sink` and `Stream` compatible.
 
-### What's next (hopefully all in 2019)
+### Roadmap
 
-- [ ] documentation and user guide
 - [x] verifying it works in WASM
-- [ ] re-evaluate the runtime (is now in the [naja_async_runtime](https://github.com/najamelan/async_runtime) crate), this needs some further thought. A nursery would be nice.
+- [x] re-evaluate the runtime. Now uses async_executors. A [nursery now exists](https://crates.io/crates/async_nursery).
 - [x] polish the wasm websockets so we can use remote actors to talk to server. (There is now ws_stream_wasm and ws_stream_tungstenite)
-- [ ] benchmarking remote actors
 - [x] some refactoring (in peer incoming we have a very long method)
-- [ ] publish a version 0.1
-- [ ] bounded mailbox, ringchannel?
-- [ ] re-evaluate the wire fromat (maybe use capn'proto, flatbuffers or SBE)
+- [x] bounded mailbox, ringchannel? Now takes `Sink + Clone` in `Addr` and `Stream` in `Inbox`, so it's possible to plug in different channel impls.
+- [ ] benchmarking remote actors
+- [ ] flesh out tests for remote.
+- [-] documentation and user guide
+- [-] publish a version 0.1. Currently in alpha except remote.
+- [-] re-evaluate the wire fromat (maybe use capn'proto, flatbuffers or SBE), is now generic so it can be changed. The interface might move to a separate crate again.
 
 
 ## Main differences with other actor libraries
 
 [Actix](https://github.com/actix/actix) is a great library that inspired me for much of the work on thespis. However a number of problems arose for me when trying to use it/work on it:
-- not targeting async/await
 - stuff that gets in the way: ActorFuture, MessageResponse trait, dns-resolvers, ...
 - no remote actors
 - not working on WASM
@@ -69,15 +72,15 @@ Thus it seemed easier to start over and question every design decision. In many 
 Actix does have features that thespis doesn't have:
 - stopping an actor (in thespis you have to drop all Addresses to it)
 - Registries
-- Supervised actors
 - actix broker
-- currently thespis_impl only has unbounded channels backing the mailbox
 - ... surely more that I have yet to discover
 
 
 As for other actor libraries, at the time of writing:
 - [kay](https://github.com/aeplay/kay) has as good as no documentation :-( so I didn't look any further. They do have remote actors and a wire format that is also the in memory representation, which probably is fast. Thespis only has a provisional wire format for now, which does not have that property.
 - [riker](https://riker.rs/) I admit that I didn't look into it much, but from the example code I saw, it looks as if an actor can only receive messages of one type, which seems like an unpleasant restriction that actix doesn't have.
+
+- in the mean time, actor libraries have spawned like mushrooms, so I have lost track. I think there are still very few that have remote actors.
 
 ## Alternatives
 

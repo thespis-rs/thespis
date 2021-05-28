@@ -1,6 +1,7 @@
 ## Useful Tools:
 
-- async thread sync: qutex
+- example of subscribing to events from a remote with pharos?
+- chat example, over-engineered?
 
 
 ## Before publish
